@@ -5,7 +5,11 @@
 
     public int CompareTo(Movie other)
     {
-        return string.Compare(Title, other.Title, StringComparison.Ordinal);
+        // Извлечение числа из названия и сортировка по нему
+        int thisNumber = int.Parse(new string(Title.Where(char.IsDigit).ToArray()));
+        int otherNumber = int.Parse(new string(other.Title.Where(char.IsDigit).ToArray()));
+
+        return thisNumber.CompareTo(otherNumber);
     }
 
     public override string ToString()
